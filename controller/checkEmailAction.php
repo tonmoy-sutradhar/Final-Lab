@@ -17,7 +17,6 @@ function sanitize($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    $data = trigger_error($data);
     return $data;
 }
 ?>
