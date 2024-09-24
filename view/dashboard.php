@@ -21,27 +21,30 @@ $username = $userDetails['name']; // Assuming the name is stored in the 'name' f
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Link external JS file -->
     <script src="js/dashboard.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <header>
-        <h2> JS Project</h2>
+        <h2> WEB TECHNOLOGIES PROJECT</h2>
     </header>
 
     <section>
-        <nav>
-            <ul>
-                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+        <nav class="nav-title" >
+            <ul id="navbar">
+                <!-- <li><a href="#home" onclick="showSection('home')">Home</a></li> -->
+                <li><a href="home.php">Home</a></li>
+
                 <li><a href="#profile" onclick="showSection('profile')">Profile</a></li>
                 <li><a href="#cp" onclick="showSection('change-password')">Change Password</a></li>
                 <li><a href="../controller/logoutAction.php">Logout</a></li>
             </ul>
         </nav>
 
-        <article>
+        
             <!-- Home Section -->
             <div id="home" class="form-section active">
                 <h1 id="main-heading">DASHBOARD</h1>
-                <p > <span id="username"> Welcome,</span> <?php echo $username; ?> <br> Donate for Bangladesh.</p> <!-- Display the user's name here -->
+                <p >Welcome, <span id="username"> <?php echo $username; ?></span>  <br> Donate for Bangladesh.</p> <!-- Display the user's name here -->
                 <img src="assets/donate.jpg" alt="">
             </div>
 
@@ -80,7 +83,7 @@ $username = $userDetails['name']; // Assuming the name is stored in the 'name' f
             <!-- Change Password Form -->
             <div id="change-password" class="form-section">
                 <form id="changePasswordForm" action="../controller/changePassAction.php" method="POST" novalidate onsubmit="return changePassword(this)">
-                    <p>Please enter your current and new password to change your password.</p>
+                    <p id="text">Please enter your current and new password Be-carefully.</p>
                     <div class="form-group">
                         <label for="current-password">Current Password</label>
                         <input type="password" name="current_password" id="current-password" placeholder="Enter current password">
@@ -91,14 +94,14 @@ $username = $userDetails['name']; // Assuming the name is stored in the 'name' f
                         <input type="password" name="new_password" id="new-password" placeholder="Enter new password">
                         <span id="cNewpasserr" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo (empty($_SESSION['change_pass_error']) ? "" : $_SESSION['change_pass_error']); ?></span>
                     </div>
-                    <input type="submit" value="Change Password">
+                    <input id="c-btn" type="submit" value="Change Password">
                 </form>
             </div>
-        </article>
+      
     </section>
 
     <footer>
-        <p> JS Project footer</p>
+        <p> Project By Tonmoy Sutradhar</p>
     </footer>
 </body>
 </html>
