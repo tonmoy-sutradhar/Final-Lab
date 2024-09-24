@@ -6,6 +6,11 @@ if (!isset($_COOKIE['user'])) {
 }
 
 $email = htmlspecialchars($_COOKIE['user']);
+
+// Assuming you have a function to get user details by email
+require_once '../model/UserData.php';
+$userDetails = getUserDetailsByEmail($email); // Fetch user details including name
+$username = $userDetails['name']; // Assuming the name is stored in the 'name' field
 ?>
 
 <!DOCTYPE html>
@@ -16,139 +21,6 @@ $email = htmlspecialchars($_COOKIE['user']);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Link external JS file -->
     <script src="js/dashboard.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        header {
-            background-color: #666;
-            padding: 30px;
-            text-align: center;
-            font-size: 35px;
-            color: white;
-        }
-
-        nav {
-            float: left;
-            width: 30%;
-            background: #ccc;
-            padding: 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            display: block;
-            padding: 8px;
-            transition: background-color 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #999;
-        }
-
-        article {
-            float: left;
-            padding: 20px;
-            width: 70%;
-            background-color: #f1f1f1;
-            min-height: 300px;
-        }
-
-        section::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        footer {
-            background-color: #777;
-            padding: 10px;
-            text-align: center;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-            nav, article {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        .breadcrumb {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #eee;
-            display: none;
-        }
-
-        .breadcrumb a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
-            padding: 8px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .edit-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .edit-button:hover {
-            background-color: #45a049;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between; /* Space between heading and button */
-            align-items: center; /* Align items vertically centered */
-            margin-bottom: 15px; /* Spacing below the header */
-        }
-
-        #editButton {
-            /* Optional styles for the edit button */
-            margin-left: auto; /* Push the button to the right */
-        }
-
-    </style>
 </head>
 <body>
     <header>
@@ -168,8 +40,9 @@ $email = htmlspecialchars($_COOKIE['user']);
         <article>
             <!-- Home Section -->
             <div id="home" class="form-section active">
-                <h1 id="main-heading">Home</h1>
-                <p>Welcome to your dashboard! Feel free to explore and manage your profile.</p>
+                <h1 id="main-heading">DASHBOARD</h1>
+                <p > <span id="username"> Welcome,</span> <?php echo $username; ?> <br> Donate for Bangladesh.</p> <!-- Display the user's name here -->
+                <img src="assets/donate.jpg" alt="">
             </div>
 
             <!-- Profile Section -->
