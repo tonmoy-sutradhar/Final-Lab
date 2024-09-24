@@ -3,9 +3,9 @@
 session_start();
 
 // Sample data initialization (In real applications, fetch from database)
-$noakhaliBalance = 200;
-$feniBalance = 600;
-$movementBalance = 400;
+$noakhaliBalance = 0.00;
+$feniBalance = 0.00;
+$movementBalance = 0.00;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['donate_noakhali'])) {

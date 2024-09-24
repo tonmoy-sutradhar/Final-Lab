@@ -8,14 +8,15 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
   display: flex;
+  align-items: center;
   background-image: url("../assets/do.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
-  align-items: center;
 }
 
 .container {
